@@ -1,0 +1,504 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD19\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">05/01/2025</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">7:35:41 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc" class="file"><acronym title="E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc">E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">45</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Waived Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">4</td></tr>
+</table>
+</td>
+</table><a name="IDVHGNWN53G5DNIHCQR2PSNXHN1KQQPDWNONW5PVKZYXYO55KCFCZF"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDB1B2C5O3MSPAOPHD1F0NJGR5QORQGADEKSMIJLMLZYKXG4WZAVLK">Clearance Constraint (Gap=0.2mm) (All),(All)</a></td>
+<td class="column2">43</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDI24QT14BWMX0IGVMJC31YCW3OLMRX0JJ1LHJHCPX10OSIBD2KLDJ">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID55BP0CBZAIAYL1AN0QLXKTNMHFYA3B1OAF0LU1NYKYGV12DXLCYC">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID123SO45PC3KEBG5ANKLHBLHRUFXLZ0IHNVYVTCE0YVKQSXGF44S">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDY2IDVE4PBMXGEG34RNJAFCUNRDBCRFJYKK22Z2HHCXV10BING5ZO">Width Constraint (Min=0.09mm) (Max=5mm) (Preferred=0.2mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCR3Y4KLIMKJ1HUQ3AXM5LYJZTNR3J5XX42V4O0MTMVMATPOZI2AH">Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHOD3OR4NZCIDDEK3CA5XFKSCEOGW15Z4UAE3TONQ3LLHYEE5DY2L">Minimum Annular Ring (Minimum=0.1mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDDIH0JXCN54T5LGDNJ1EXOXDJU1F5YGZ10DHNWF3M21CHO2IOLDJ">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVNPBP0RB0PNMPHKNGSWBUUZMLT1TDXSK0XEZEKEPO4OIXNJWVEK">Hole To Hole Clearance (Gap=0.25mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSGUEXULTHV5QGMPEEIMYOMXBWN1ORV0MY5HNZZDBXBAYO0IAA4VG">Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRTIC2PRVSHL4MWA5CVHYCM05D5H0ERAJJMYXYDV5SSZOGAATCUF">Silk To Solder Mask (Clearance=0.11mm) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDWXZG0GSRUJ3SN2SRMKFIKWGDOHS55H03Z2UDA1HJNAI0TO1LNJTF">Silk to Silk (Clearance=0mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDES1J32MOOKMHC5OPHYP350US1P52ILDYAVIXD4I1KBTVDPZB0HDC">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJF1KAVA1HITOBRZ2V2U5BK3VOI134ELT4FXWDXORZM1GIEAYNYGH">Height Constraint (Min=0mm) (Max=50mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">45</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Waived Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0VB45FKRYO2XIH053WTSDQ4TYIZ2OGSCZW0Q1WF3C4YVA4GX4MJ">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">4</td>
+</tr>
+</table><br><a name="ID5S42AEO1DC5LMH2B21MFYGIZJN3HIER1NAFRM1HJO2Z1EHAD42IG"><h2>Rule Violations</h2></a><a name="IDB1B2C5O3MSPAOPHD1F0NJGR5QORQGADEKSMIJLMLZYKXG4WZAVLK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=0.2mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19276.641mil|Location2.X=19285.765mil|Location1.Y=22884.569mil|Location2.Y=22893.693mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19276.641mil|Location2.X=19285.765mil|Location1.Y=22884.569mil|Location2.Y=22893.693mil|Absolute=True">Clearance Constraint: (0.1mm &lt; 0.2mm) Between Track (20.07mm,8.472mm)(44.411mm,32.813mm) on Top Layer And Track (31.115mm,26.924mm)(38.097mm,26.924mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19276.641mil|Location2.X=19285.765mil|Location1.Y=22884.569mil|Location2.Y=22893.693mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19276.641mil|Location2.X=19285.765mil|Location1.Y=22884.569mil|Location2.Y=22893.693mil|Absolute=True">Clearance Constraint: (0.1mm &lt; 0.2mm) Between Track (20.07mm,8.472mm)(44.411mm,32.813mm) on Top Layer And Track (38.097mm,26.924mm)(42.006mm,30.832mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19430.509mil|Location2.X=19439.633mil|Location1.Y=23038.438mil|Location2.Y=23047.561mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19430.509mil|Location2.X=19439.633mil|Location1.Y=23038.438mil|Location2.Y=23047.561mil|Absolute=True">Clearance Constraint: (0.1mm &lt; 0.2mm) Between Track (20.07mm,8.472mm)(44.411mm,32.813mm) on Top Layer And Track (42.006mm,30.832mm)(42.006mm,31.212mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22288.035mil|Location2.Y=22297.159mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22288.035mil|Location2.Y=22297.159mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (33.921mm,11.53mm)(34.056mm,11.666mm) on Top Layer And Track (34.416mm,11.666mm)(34.416mm,13.208mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22288.035mil|Location2.Y=22297.159mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22288.035mil|Location2.Y=22297.159mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (33.921mm,11.53mm)(34.056mm,11.666mm) on Top Layer And Track (34.416mm,11.666mm)(34.551mm,11.53mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22288.035mil|Location2.Y=22297.159mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22288.035mil|Location2.Y=22297.159mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (34.056mm,11.666mm)(34.056mm,18.896mm) on Top Layer And Track (34.416mm,11.666mm)(34.416mm,13.208mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22288.035mil|Location2.Y=22297.159mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22288.035mil|Location2.Y=22297.159mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (34.056mm,11.666mm)(34.056mm,18.896mm) on Top Layer And Track (34.416mm,11.666mm)(34.551mm,11.53mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22348.745mil|Location2.Y=22357.869mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22348.745mil|Location2.Y=22357.869mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (34.056mm,11.666mm)(34.056mm,18.896mm) on Top Layer And Track (34.416mm,13.208mm)(34.416mm,18.747mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22348.745mil|Location2.Y=22357.869mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22348.745mil|Location2.Y=22357.869mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (34.056mm,11.666mm)(34.056mm,18.896mm) on Top Layer And Track (34.416mm,13.208mm)(35.226mm,13.208mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22566.833mil|Location2.Y=22575.957mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19120.438mil|Location2.X=19129.562mil|Location1.Y=22566.833mil|Location2.Y=22575.957mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (34.056mm,11.666mm)(34.056mm,18.896mm) on Top Layer And Track (34.416mm,18.747mm)(48.246mm,32.577mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19122.508mil|Location2.X=19131.632mil|Location1.Y=22571.83mil|Location2.Y=22580.954mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19122.508mil|Location2.X=19131.632mil|Location1.Y=22571.83mil|Location2.Y=22580.954mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (34.056mm,18.896mm)(47.992mm,32.831mm) on Top Layer And Track (34.416mm,13.208mm)(34.416mm,18.747mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19122.508mil|Location2.X=19131.632mil|Location1.Y=22571.83mil|Location2.Y=22580.954mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19122.508mil|Location2.X=19131.632mil|Location1.Y=22571.83mil|Location2.Y=22580.954mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (34.056mm,18.896mm)(47.992mm,32.831mm) on Top Layer And Track (34.416mm,18.747mm)(48.246mm,32.577mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19666.998mil|Location2.X=19676.122mil|Location1.Y=23116.321mil|Location2.Y=23125.445mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19666.998mil|Location2.X=19676.122mil|Location1.Y=23116.321mil|Location2.Y=23125.445mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (34.056mm,18.896mm)(47.992mm,32.831mm) on Top Layer And Track (48.246mm,32.577mm)(48.327mm,32.577mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19668.598mil|Location2.X=19677.722mil|Location1.Y=23116.321mil|Location2.Y=23125.445mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19668.598mil|Location2.X=19677.722mil|Location1.Y=23116.321mil|Location2.Y=23125.445mil|Absolute=True">Clearance Constraint: (0.188mm &lt; 0.2mm) Between Track (34.056mm,18.896mm)(47.992mm,32.831mm) on Top Layer And Track (48.327mm,32.577mm)(48.878mm,33.129mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19666.998mil|Location2.X=19676.122mil|Location1.Y=23116.321mil|Location2.Y=23125.445mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19666.998mil|Location2.X=19676.122mil|Location1.Y=23116.321mil|Location2.Y=23125.445mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (34.416mm,18.747mm)(48.246mm,32.577mm) on Top Layer And Track (47.992mm,32.831mm)(47.992mm,32.913mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19666.998mil|Location2.X=19676.122mil|Location1.Y=23117.921mil|Location2.Y=23127.045mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19666.998mil|Location2.X=19676.122mil|Location1.Y=23117.921mil|Location2.Y=23127.045mil|Absolute=True">Clearance Constraint: (0.188mm &lt; 0.2mm) Between Track (34.416mm,18.747mm)(48.246mm,32.577mm) on Top Layer And Track (47.992mm,32.913mm)(48.543mm,33.464mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19550.617mil|Location2.X=19559.74mil|Location1.Y=23379.015mil|Location2.Y=23388.139mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19550.617mil|Location2.X=19559.74mil|Location1.Y=23379.015mil|Location2.Y=23388.139mil|Absolute=True">Clearance Constraint: (0.194mm &lt; 0.2mm) Between Track (44.005mm,38.22mm)(44.882mm,39.096mm) on Top Layer And Track (44.365mm,40.453mm)(46.421mm,38.397mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19603.761mil|Location2.X=19612.885mil|Location1.Y=23272.899mil|Location2.Y=23282.023mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19603.761mil|Location2.X=19612.885mil|Location1.Y=23272.899mil|Location2.Y=23282.023mil|Absolute=True">Clearance Constraint: (0.196mm &lt; 0.2mm) Between Track (46.068mm,35.957mm)(47.627mm,37.516mm) on Top Layer And Track (46.277mm,36.841mm)(46.353mm,36.841mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19603.761mil|Location2.X=19612.885mil|Location1.Y=23272.899mil|Location2.Y=23282.023mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19603.761mil|Location2.X=19612.885mil|Location1.Y=23272.899mil|Location2.Y=23282.023mil|Absolute=True">Clearance Constraint: (0.196mm &lt; 0.2mm) Between Track (46.068mm,35.957mm)(47.627mm,37.516mm) on Top Layer And Track (46.353mm,36.841mm)(48.012mm,38.499mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19642.119mil|Location2.X=19651.243mil|Location1.Y=23311.257mil|Location2.Y=23320.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19642.119mil|Location2.X=19651.243mil|Location1.Y=23311.257mil|Location2.Y=23320.381mil|Absolute=True">Clearance Constraint: (0.196mm &lt; 0.2mm) Between Track (46.353mm,36.841mm)(48.012mm,38.499mm) on Top Layer And Track (47.627mm,37.516mm)(48.108mm,37.516mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19666.998mil|Location2.X=19676.122mil|Location1.Y=23116.321mil|Location2.Y=23125.445mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19666.998mil|Location2.X=19676.122mil|Location1.Y=23116.321mil|Location2.Y=23125.445mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.2mm) Between Track (47.992mm,32.831mm)(47.992mm,32.913mm) on Top Layer And Track (48.246mm,32.577mm)(48.327mm,32.577mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19668.598mil|Location2.X=19677.722mil|Location1.Y=23116.321mil|Location2.Y=23125.445mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19668.598mil|Location2.X=19677.722mil|Location1.Y=23116.321mil|Location2.Y=23125.445mil|Absolute=True">Clearance Constraint: (0.188mm &lt; 0.2mm) Between Track (47.992mm,32.831mm)(47.992mm,32.913mm) on Top Layer And Track (48.327mm,32.577mm)(48.878mm,33.129mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19666.998mil|Location2.X=19676.122mil|Location1.Y=23117.921mil|Location2.Y=23127.045mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19666.998mil|Location2.X=19676.122mil|Location1.Y=23117.921mil|Location2.Y=23127.045mil|Absolute=True">Clearance Constraint: (0.188mm &lt; 0.2mm) Between Track (47.992mm,32.913mm)(48.543mm,33.464mm) on Top Layer And Track (48.246mm,32.577mm)(48.327mm,32.577mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19800.064mil|Location2.X=19809.188mil|Location1.Y=23551.64mil|Location2.Y=23560.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19800.064mil|Location2.X=19809.188mil|Location1.Y=23551.64mil|Location2.Y=23560.764mil|Absolute=True">Clearance Constraint: (0.142mm &lt; 0.2mm) Between Track (51.206mm,43.815mm)(51.359mm,43.663mm) on Top Layer And Track (51.638mm,43.86mm)(51.638mm,44.501mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19800.064mil|Location2.X=19809.188mil|Location1.Y=23551.64mil|Location2.Y=23560.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19800.064mil|Location2.X=19809.188mil|Location1.Y=23551.64mil|Location2.Y=23560.764mil|Absolute=True">Clearance Constraint: (0.142mm &lt; 0.2mm) Between Track (51.206mm,43.815mm)(51.359mm,43.663mm) on Top Layer And Track (51.638mm,43.86mm)(52.9mm,42.599mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19800.064mil|Location2.X=19809.188mil|Location1.Y=23551.64mil|Location2.Y=23560.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19800.064mil|Location2.X=19809.188mil|Location1.Y=23551.64mil|Location2.Y=23560.764mil|Absolute=True">Clearance Constraint: (0.142mm &lt; 0.2mm) Between Track (51.359mm,43.635mm)(51.359mm,43.663mm) on Top Layer And Track (51.638mm,43.86mm)(51.638mm,44.501mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19800.064mil|Location2.X=19809.188mil|Location1.Y=23551.64mil|Location2.Y=23560.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19800.064mil|Location2.X=19809.188mil|Location1.Y=23551.64mil|Location2.Y=23560.764mil|Absolute=True">Clearance Constraint: (0.142mm &lt; 0.2mm) Between Track (51.359mm,43.635mm)(51.359mm,43.663mm) on Top Layer And Track (51.638mm,43.86mm)(52.9mm,42.599mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19800.595mil|Location2.X=19809.719mil|Location1.Y=23550.566mil|Location2.Y=23559.69mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19800.595mil|Location2.X=19809.719mil|Location1.Y=23550.566mil|Location2.Y=23559.69mil|Absolute=True">Clearance Constraint: (0.157mm &lt; 0.2mm) Between Track (51.359mm,43.635mm)(52.436mm,42.558mm) on Top Layer And Track (51.638mm,43.86mm)(51.638mm,44.501mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19841.941mil|Location2.X=19851.065mil|Location1.Y=23509.22mil|Location2.Y=23518.344mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19841.941mil|Location2.X=19851.065mil|Location1.Y=23509.22mil|Location2.Y=23518.344mil|Absolute=True">Clearance Constraint: (0.157mm &lt; 0.2mm) Between Track (51.359mm,43.635mm)(52.436mm,42.558mm) on Top Layer And Track (51.638mm,43.86mm)(52.9mm,42.599mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19860.111mil|Location2.X=19869.235mil|Location1.Y=23199.572mil|Location2.Y=23208.696mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19860.111mil|Location2.X=19869.235mil|Location1.Y=23199.572mil|Location2.Y=23208.696mil|Absolute=True">Clearance Constraint: (0.182mm &lt; 0.2mm) Between Track (51.478mm,34.628mm)(53.018mm,34.628mm) on Top Layer And Track (52.225mm,35.814mm)(53.029mm,35.01mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19860.111mil|Location2.X=19869.235mil|Location1.Y=23199.572mil|Location2.Y=23208.696mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19860.111mil|Location2.X=19869.235mil|Location1.Y=23199.572mil|Location2.Y=23208.696mil|Absolute=True">Clearance Constraint: (0.182mm &lt; 0.2mm) Between Track (51.478mm,34.628mm)(53.018mm,34.628mm) on Top Layer And Track (53.029mm,35.01mm)(53.344mm,35.01mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19841.941mil|Location2.X=19851.065mil|Location1.Y=23509.22mil|Location2.Y=23518.344mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19841.941mil|Location2.X=19851.065mil|Location1.Y=23509.22mil|Location2.Y=23518.344mil|Absolute=True">Clearance Constraint: (0.157mm &lt; 0.2mm) Between Track (51.638mm,43.86mm)(52.9mm,42.599mm) on Top Layer And Track (52.436mm,42.325mm)(52.436mm,42.558mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19860.111mil|Location2.X=19869.235mil|Location1.Y=23199.572mil|Location2.Y=23208.696mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19860.111mil|Location2.X=19869.235mil|Location1.Y=23199.572mil|Location2.Y=23208.696mil|Absolute=True">Clearance Constraint: (0.182mm &lt; 0.2mm) Between Track (52.225mm,35.814mm)(53.029mm,35.01mm) on Top Layer And Track (53.018mm,34.628mm)(53.784mm,33.863mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19860.111mil|Location2.X=19869.235mil|Location1.Y=23199.572mil|Location2.Y=23208.696mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19860.111mil|Location2.X=19869.235mil|Location1.Y=23199.572mil|Location2.Y=23208.696mil|Absolute=True">Clearance Constraint: (0.182mm &lt; 0.2mm) Between Track (53.018mm,34.628mm)(53.784mm,33.863mm) on Top Layer And Track (53.029mm,35.01mm)(53.344mm,35.01mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19887.822mil|Location2.X=19897.307mil|Location1.Y=23101.079mil|Location2.Y=23110.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19887.822mil|Location2.X=19897.307mil|Location1.Y=23101.079mil|Location2.Y=23110.203mil|Absolute=True">Clearance Constraint: (0.114mm &lt; 0.2mm) Between Track (53.131mm,33.129mm)(53.806mm,32.453mm) on Top Layer And Track (53.355mm,32.225mm)(53.674mm,32.225mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19887.822mil|Location2.X=19897.307mil|Location1.Y=23101.079mil|Location2.Y=23110.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19887.822mil|Location2.X=19897.307mil|Location1.Y=23101.079mil|Location2.Y=23110.203mil|Absolute=True">Clearance Constraint: (0.114mm &lt; 0.2mm) Between Track (53.131mm,33.129mm)(53.806mm,32.453mm) on Top Layer And Track (53.674mm,32.225mm)(55.973mm,29.925mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19887.822mil|Location2.X=19897.307mil|Location1.Y=23101.079mil|Location2.Y=23110.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19887.822mil|Location2.X=19897.307mil|Location1.Y=23101.079mil|Location2.Y=23110.203mil|Absolute=True">Clearance Constraint: (0.114mm &lt; 0.2mm) Between Track (53.355mm,32.225mm)(53.674mm,32.225mm) on Top Layer And Track (53.806mm,32.453mm)(54.313mm,32.453mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19887.822mil|Location2.X=19897.307mil|Location1.Y=23101.079mil|Location2.Y=23110.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19887.822mil|Location2.X=19897.307mil|Location1.Y=23101.079mil|Location2.Y=23110.203mil|Absolute=True">Clearance Constraint: (0.114mm &lt; 0.2mm) Between Track (53.674mm,32.225mm)(55.973mm,29.925mm) on Top Layer And Track (53.806mm,32.453mm)(54.313mm,32.453mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19981.564mil|Location2.X=19990.688mil|Location1.Y=23367.184mil|Location2.Y=23376.308mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19981.564mil|Location2.X=19990.688mil|Location1.Y=23367.184mil|Location2.Y=23376.308mil|Absolute=True">Clearance Constraint: (0.154mm &lt; 0.2mm) Between Track (55.606mm,38.397mm)(56.109mm,38.9mm) on Top Layer And Track (55.755mm,39.253mm)(57.66mm,39.253mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19981.564mil|Location2.X=19990.688mil|Location1.Y=23367.184mil|Location2.Y=23376.308mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19981.564mil|Location2.X=19990.688mil|Location1.Y=23367.184mil|Location2.Y=23376.308mil|Absolute=True">Clearance Constraint: (0.154mm &lt; 0.2mm) Between Track (55.755mm,39.253mm)(57.66mm,39.253mm) on Top Layer And Track (56.109mm,38.9mm)(57.302mm,38.9mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20028.564mil|Location2.X=20037.688mil|Location1.Y=23367.184mil|Location2.Y=23376.308mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20028.564mil|Location2.X=20037.688mil|Location1.Y=23367.184mil|Location2.Y=23376.308mil|Absolute=True">Clearance Constraint: (0.154mm &lt; 0.2mm) Between Track (55.755mm,39.253mm)(57.66mm,39.253mm) on Top Layer And Track (57.302mm,38.295mm)(57.302mm,38.9mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20028.564mil|Location2.X=20037.688mil|Location1.Y=23367.184mil|Location2.Y=23376.308mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20028.564mil|Location2.X=20037.688mil|Location1.Y=23367.184mil|Location2.Y=23376.308mil|Absolute=True">Clearance Constraint: (0.154mm &lt; 0.2mm) Between Track (55.755mm,39.253mm)(57.66mm,39.253mm) on Top Layer And Track (57.302mm,38.9mm)(57.914mm,38.9mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20042.66mil|Location2.X=20051.784mil|Location1.Y=23367.184mil|Location2.Y=23376.308mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20042.66mil|Location2.X=20051.784mil|Location1.Y=23367.184mil|Location2.Y=23376.308mil|Absolute=True">Clearance Constraint: (0.154mm &lt; 0.2mm) Between Track (57.302mm,38.9mm)(57.914mm,38.9mm) on Top Layer And Track (57.66mm,39.253mm)(58.665mm,40.257mm) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID55BP0CBZAIAYL1AN0QLXKTNMHFYA3B1OAF0LU1NYKYGV12DXLCYC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20022.16mil|Location2.X=20173.209mil|Location1.Y=22722.515mil|Location2.Y=22873.564mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20022.16mil|Location2.X=20173.209mil|Location1.Y=22722.515mil|Location2.Y=22873.564mil|Absolute=True">Isolated copper: Split Plane  (GND) on Layer 1. Dead copper detected. Copper area is : 7.36 sq. mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20022.16mil|Location2.X=20173.209mil|Location1.Y=22722.515mil|Location2.Y=22873.564mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20022.16mil|Location2.X=20173.209mil|Location1.Y=22722.515mil|Location2.Y=22873.564mil|Absolute=True">Isolated copper: Split Plane  (GND) on Layer 2. Dead copper detected. Copper area is : 7.36 sq. mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDHFWRSJVMIA3ZL4WR4PTP0EQAXJ52VYESSTLJ3JN0LVJGBUYXR0FF"><h2>Waived Violations</h2></a><a name="ID0VB45FKRYO2XIH053WTSDQ4TYIZ2OGSCZW0Q1WF3C4YVA4GX4MJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="waived">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18815.477mil|Location2.X=18954.523mil|Location1.Y=22560.477mil|Location2.Y=22699.523mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18815.477mil|Location2.X=18954.523mil|Location1.Y=22560.477mil|Location2.Y=22699.523mil|Absolute=True">Hole Size Constraint: (3.5mm &gt; 2.54mm) Pad J1-8(28.14mm,20.236mm) on Multi-Layer Actual Hole Size = 3.5mm</acronym></a><br>Waived by Ahmed Osman at 03/01/2025 11:31:44 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18815.477mil|Location2.X=18954.523mil|Location1.Y=23610.477mil|Location2.Y=23749.523mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18815.477mil|Location2.X=18954.523mil|Location1.Y=23610.477mil|Location2.Y=23749.523mil|Absolute=True">Hole Size Constraint: (3.5mm &gt; 2.54mm) Pad J1-8(28.14mm,46.906mm) on Multi-Layer Actual Hole Size = 3.5mm</acronym></a><br>Waived by Ahmed Osman at 03/01/2025 11:31:44 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17895.477mil|Location2.X=18034.523mil|Location1.Y=22560.477mil|Location2.Y=22699.523mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17895.477mil|Location2.X=18034.523mil|Location1.Y=22560.477mil|Location2.Y=22699.523mil|Absolute=True">Hole Size Constraint: (3.5mm &gt; 2.54mm) Pad J1-8(4.772mm,20.236mm) on Multi-Layer Actual Hole Size = 3.5mm</acronym></a><br>Waived by Ahmed Osman at 03/01/2025 11:31:44 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17895.477mil|Location2.X=18034.523mil|Location1.Y=23610.477mil|Location2.Y=23749.523mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Mohamed Ebrahmed Altium\Temperature Sensor\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17895.477mil|Location2.X=18034.523mil|Location1.Y=23610.477mil|Location2.Y=23749.523mil|Absolute=True">Hole Size Constraint: (3.5mm &gt; 2.54mm) Pad J1-8(4.772mm,46.906mm) on Multi-Layer Actual Hole Size = 3.5mm</acronym></a><br>Waived by Ahmed Osman at 03/01/2025 11:31:44 PM</td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

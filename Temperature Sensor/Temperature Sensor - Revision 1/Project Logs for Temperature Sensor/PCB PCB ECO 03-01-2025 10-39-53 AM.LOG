@@ -1,0 +1,14 @@
+Added Component: Designator=J1(OLED Display)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Manufacturer 2"; Value = "XFCN"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number 2"; Value = "PZ254V-11-07P"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 2"; Value = "LCSC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 2"; Value = "C492406"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=J1-1
+Added Pin To Net: NetName=+5V Pin=J1-2
+Added Pin To Net: NetName=CLK Pin=J1-3
+Added Pin To Net: NetName=MOSI Pin=J1-4
+Added Pin To Net: NetName=RST Pin=J1-5
+Added Pin To Net: NetName=DC Pin=J1-6
+Added Pin To Net: NetName=CS Pin=J1-7
+Added Member To Class: ClassName=Bluetooth and OLED Display Member=Component J1 Display Male Header

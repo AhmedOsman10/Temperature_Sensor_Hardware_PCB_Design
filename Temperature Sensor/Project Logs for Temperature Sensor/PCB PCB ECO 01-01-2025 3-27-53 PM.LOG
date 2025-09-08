@@ -1,0 +1,20 @@
+Added Pin To Net: NetName=+3V3 Pin=C14-2
+Added Pin To Net: NetName=+3V3 Pin=C15-2
+Added Pin To Net: NetName=+3V3 Pin=C16-2
+Added Pin To Net: NetName=+3V3 Pin=C17-2
+Added Pin To Net: NetName=+3V3 Pin=C18-2
+Added Pin To Net: NetName=+3V3 Pin=C19-2
+Added Pin To Net: NetName=+3V3 Pin=D1-2
+Added Pin To Net: NetName=+3V3 Pin=D2-2
+Added Pin To Net: NetName=+3V3 Pin=D3-2
+Added Pin To Net: NetName=+3V3 Pin=J7-1
+Added Pin To Net: NetName=+3V3 Pin=J7-2
+Added Pin To Net: NetName=+3V3 Pin=R4-2
+Added Pin To Net: NetName=+3V3 Pin=R5-2
+Added Pin To Net: NetName=+3V3 Pin=R6-2
+Added Pin To Net: NetName=+3V3 Pin=R11-2
+Added Pin To Net: NetName=+3V3 Pin=U5-9
+Added Pin To Net: NetName=+3V3 Pin=U5-24
+Added Pin To Net: NetName=+3V3 Pin=U5-36
+Added Pin To Net: NetName=+3V3 Pin=U5-48
+Added Member To Class: ClassName=MCU_ Member=Component J7 BOOT0 and BOOT 1 connector

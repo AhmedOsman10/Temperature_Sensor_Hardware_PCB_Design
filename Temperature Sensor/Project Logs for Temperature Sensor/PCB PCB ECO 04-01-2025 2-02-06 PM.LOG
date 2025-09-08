@@ -1,0 +1,24 @@
+Change Component DesignItemId : Designator=L1 Old DesignItemId=IND  12.3x12.3mm 68uH ±20% 140mO_1 New DesignItemId=IND  12.3x12.3mm 68uH ±20% 140mO_1
+Change Component Description : Designator=J1 Old Description=- Display: 0.95" Inch 7 Pin Colorful 65K SPI OLED Display Module SSD1331 9664 Resolution For 51 STM32 Arduino
+- Connector: Direct Insert Policy 2.5mm 7P 6mm -40?~+105? 3mm 2.54mm Single Row Black Brass 1x7P Plugin,P=2.54mm Pin Headers ROHS New Description=- Display: 0.95" Inch 7 Pin Colorful 65K SPI OLED Display Module SSD1331 9664 Resolution For 51 STM32 Arduino
+- Connector: Direct Insert Policy 2.5mm 7P 6mm -40?~+105? 3mm 2.54mm Single Row Black Brass 1x7P Plugin,P=2.54mm Pin Headers ROHS
+Change Component Description : Designator=L1 Old Description=2.1A 68uH ±20% 140mO SMD,12.3x12.3mm Inductors (SMD) ROHS New Description=2.1A 68uH ±20% 140mO SMD,12.3x12.3mm Inductors (SMD) ROHS
+Change Component Description : Designator=J3 Old Description=2.54mm 2.54mm Double Row 2.5A 6P -40?~+105? Direct Insert 2x3P Top 8.5mm Square Hole Plugin,P=2.54mm Female Headers ROHS New Description=2.54mm 2.54mm Double Row 2.5A 6P -40?~+105? Direct Insert 2x3P Top 8.5mm Square Hole Plugin,P=2.54mm Female Headers ROHS
+Change Component Description : Designator=J7 Old Description=2.54mm 2.54mm Double Row 2.5A 6P -40?~+105? Direct Insert 2x3P Top 8.5mm Square Hole Plugin,P=2.54mm Female Headers ROHS New Description=2.54mm 2.54mm Double Row 2.5A 6P -40?~+105? Direct Insert 2x3P Top 8.5mm Square Hole Plugin,P=2.54mm Female Headers ROHS
+Change Component Description : Designator=J10 Old Description=Bend-in DC Power Receptacle -20?~+70? 2.5mm 6.3mm 3A 30V Plugin DC Power Connectors ROHS New Description=Bend-in DC Power Receptacle -20?~+70? 2.5mm 6.3mm 3A 30V Plugin DC Power Connectors ROHS
+Added Component: Designator=J9(Connector USB MICRO)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Manufacturer 2"; Value = "SHOU HAN"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number 2"; Value = "MicroXNJ"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 2"; Value = "LCSC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 2"; Value = "C404969"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+5V Pin=J9-1
+Added Pin To Net: NetName=USB_Up_N Pin=J9-2
+Added Pin To Net: NetName=USB_UP_P Pin=J9-3
+Added Pin To Net: NetName=GND Pin=J9-4
+Added Pin To Net: NetName=GND Pin=J9-5
+Added Pin To Net: NetName=GND Pin=J9-SH
+Added Pin To Net: NetName=GND Pin=J9-SH
+Added Pin To Net: NetName=GND Pin=J9-SH
+Added Pin To Net: NetName=GND Pin=J9-SH
+Added Member To Class: ClassName=MCU_ Member=Component J9 Connector USB MICRO

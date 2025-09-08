@@ -1,0 +1,11 @@
+Added Component: Designator=J7(2X3 Female Pin Header Connector)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Manufacture"; Value = "ZHOURI"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacture Part Number"; Value = "PM2.54-2*3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 2"; Value = "LCSC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 2"; Value = "C5116527"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetJ7_3 Pin=J7-3
+Added Pin To Net: NetName=NetJ7_4 Pin=J7-4
+Added Pin To Net: NetName=GND Pin=J7-5
+Added Pin To Net: NetName=GND Pin=J7-6
+Added Member To Class: ClassName=MCU_ Member=Component J7 BOOT0 and BOOT 1 connector
