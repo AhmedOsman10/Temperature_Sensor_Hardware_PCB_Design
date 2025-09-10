@@ -1,8 +1,0 @@
-Added Pin To Net: NetName=NetU3_1 Pin=R5-1
-Added Pin To Net: NetName=+3V3 Pin=R5-2
-Added Pin To Net: NetName=NetU3_6 Pin=R6-1
-Change Net Name : Old Net Name=NetU3_1 New Net Name=NetR5_1
-Change Net Name : Old Net Name=NetU3_6 New Net Name=NetR6_1
-Change Net Color : Old Net Color=RGB(158, 161, 117) New Net Color=RGB(110, 110, 255)
-Change Net Color : Old Net Color=RGB(158, 161, 117) New Net Color=RGB(110, 110, 255)
-Added Member To Class: ClassName=MCU_ Member=Component R10 10kR
